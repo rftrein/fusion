@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Lista de Clientes</h1>
+  <!-- It won't show if there is no student data -->
+  <a routerLink="/add-cliente" class="btn btn-success" *ngIf="hideWhenNoCliente">
+    <i class="fas fa-plus custom-fa-plus"></i>
+    Adicionar Cliente
+  </a>
+</div>
+
+<div class="pricing-header mx-auto">
+
+  <!-- Preloader shows before the data loads-->
+  <div class="no-data text-center" *ngIf="preLoader">
+    <img src="../../../../assets/preloader.gif" class="preloader-icon" alt="Carregando...">
+  </div>
+
+  <!-- No data shows when their is no student data available -->
+  <div class="no-data text-center" *ngIf="noData">
+    <img src="../../../../assets/no-student.svg" class="nodata-msg" alt="">
+    <p class="nodata-msg">Não foi encontrado nenhum cliente ainda!</p>
+    <a routerLink="/add-cliente" class="btn btn-success">
+      <i class="fas fa-plus custom-fa-plus"></i>
+      Adicionar Cliente
+    </a>
+  </div>
+
+  <!-- Showing students data -->
+  <div class="table-responsive" *ngIf="hideWhenNoCliente">
+    <table class="table table-bordered table-responsive-sm table-responsive-md table-responsive-lg">
+      <thead>
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">Email</th>
+          <th scope="col">Celular</th>
+          <th scope="col">Telefone</th>
+          <th class="text-center" scope="col">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cliente of Cliente| paginate: { itemsPerPage: 10, currentPage: p }; let i = index;">          
+          <td>{{cliente.nome}}</td>
+          <td>{{cliente.email}}</td>
+          <td>{{cliente.celular}}</td>
+          <td>{{cliente.telefone}}</td>
+          <td class="text-center action-block">            
+            <i class="far fa-edit" routerLink="/edit-cliente/{{cliente.$key}}" style="margin-right: 10px;"></i>
+            <i class="far fa-trash-alt" (click)="deleteCliente(cliente)"></i></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- Pagination -->
+  <pagination-controls (pageChange)="p = $event" autoHide="true" responsive="true"></pagination-controls>
+</div>

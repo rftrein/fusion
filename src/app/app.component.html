@@ -1,0 +1,53 @@
+<!-- Top navigation -->
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-sm-3 col-md-2 mr-0" routerLink="/add-cliente">
+    <img class="brand-logo" src="assets/Fusion-Icon-256x256.png" style="width: 30px; margin-right: 10px;" alt="positronX.io Logo">
+    <span class="dasboard-text">Dashboard</span>
+  </a>
+  <ul class="navbar-nav px-3">
+    <li class="nav-item text-nowrap">
+      <a class="nav-link" routerLink="/add-cliente">
+        <span class="user-image" style="background-image: url('../../../assets/user.jpg')"></span>
+        Admin
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<!-- Sidebar navigation -->
+<div class="container-fluid" style="margin-top: 50px;">
+  <div class="row">
+    <nav class="col-md-2 d-md-block bg-light sidebar">
+      <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+
+          <!-- routerLink="/register-student" to navigate to view-students component -->
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/add-cliente" routerLinkActive="active">
+              <i class="fas fa-plus"></i>Adicionar Cliente
+            </a>
+          </li>
+
+          <!-- routerLink="/view-students" to navigate to view-students component -->
+          <!-- routerLinkActive="active" activates active class for component-->
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/list-cliente" routerLinkActive="active">
+              <i class="fas fa-list-ul" style="margin-right: 5px;"></i>Clientes
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Main content -->
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+      <div class="inner-adjust">
+
+        <!-- Use router template to show the components for which router service is activated -->
+        <router-outlet></router-outlet>
+
+      </div>
+    </main>
+
+  </div>
+</div>
